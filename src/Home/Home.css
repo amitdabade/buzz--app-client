@@ -1,0 +1,38 @@
+.home-container {
+  width: 300px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.text-input-field {
+  padding: 12px;
+  border-radius: 3px;
+  font-size: 20px;
+  margin: 12px 0px;
+  width: 300px;
+  box-sizing: border-box;
+  border: 1px solid;
+}
+
+.text-input-field:focus {
+  outline: none;
+}
+
+.join-room-button {
+  display: block;
+  padding: 12px;
+  background: #31a24c;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  width: 300px;
+  box-sizing: border-box;
+  margin-top: 12px;
+}
+
+.disable-join-button {
+  cursor: not-allowed;
+  pointer-events: none;
+}
