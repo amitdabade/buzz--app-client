@@ -75,6 +75,24 @@ const Host = () => {
     setShowUserList(!showUserList);
   };
 
+  const getBuzzTime = (t) => {
+    const time =
+      (new Date(t).getTime() - new Date(buzzListState[0].time).getTime()) /
+      1000;
+    if (time === 0) {
+      return new Date(t).toLocaleTimeString();
+    } else {
+      return '+' + time + ' sec';
+    }
+  };
+
+  const getUserListClass = (team) => {
+    if (team === 'Team 1' || team === 'Team 3') {
+      return 'user-list-item user-list-item-odd';
+    }
+    return 'user-list-item';
+  };
+
   return (
     <div className='host-room-container'>
       <h1 className='room-name'>Room: {roomCode}</h1>
@@ -85,8 +103,10 @@ const Host = () => {
         <div className='user-list-wrapper'>
           <ol className='user-list'>
             {userListSorted?.map((user, i) => (
-              <li className='user-list-item' key={user.userName}>
-                <span className='user-no'>{i + 1}</span>
+              <li
+                className={getUserListClass(user.teamName)}
+                key={user.userName}
+              >
                 <span className='user-name'>{user.userName}</span>
                 <span className='user-team'>{user.teamName}</span>
               </li>
@@ -100,6 +120,7 @@ const Host = () => {
             <li className='buzz-list-item' key={user.userName}>
               <span className='buzz-no'>{i + 1}</span>
               <span className='buzz-name'>{user.userName}</span>
+              <span className='buzz-time'>{getBuzzTime(user.time)}</span>
               <span className='buzz-team'>{user.teamName}</span>
             </li>
           ))}

@@ -20,6 +20,14 @@ const BuzzRoom = (props) => {
   const { buzzList, removeUser, addBuzz, addUser } = useBuzz(roomCode);
   const [buzzRank, setBuzzRank] = useState(0);
 
+  const getFromLs = (key) => {
+    return JSON.parse(localStorage.getItem(key));
+  };
+
+  const removeFromLs = (key) => {
+    localStorage.removeItem(key);
+  };
+
   useEffect(() => {
     addUser({ userName, teamName });
   }, []);
@@ -27,17 +35,30 @@ const BuzzRoom = (props) => {
   useEffect(() => {
     if (buzzList.length === 0) {
       buzzBtnRef.current.removeAttribute('disabled');
+      setBuzzRank(0);
+      removeFromLs('buzzList');
     }
   }, [buzzList]);
 
   const handleSendBuzz = () => {
     buzzBtnRef.current.setAttribute('disabled', 'true');
-    addBuzz({ userName, teamName, time: new Date().toLocaleTimeString() });
+    addBuzz({ userName, teamName, time: new Date() });
+    setTimeout(() => {
+      getBuzzRank();
+    }, 500);
   };
 
   const handleExitBuzzRoom = () => {
     removeUser({ userName, teamName });
     props.history.push('./');
+  };
+
+  const getBuzzRank = () => {
+    const buzzList = getFromLs('buzzList');
+    let rank = buzzList?.findIndex(
+      (u) => u.userName.toLocaleLowerCase() === userName.toLocaleLowerCase()
+    );
+    setBuzzRank(rank + 1);
   };
 
   return (
