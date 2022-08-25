@@ -12,6 +12,12 @@
 
 .room-name {
   margin-top: 0;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.reload-all {
+  cursor: pointer;
 }
 
 .new-message-input-field {

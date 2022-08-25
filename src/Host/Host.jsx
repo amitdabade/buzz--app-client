@@ -93,9 +93,21 @@ const Host = () => {
     return 'user-list-item';
   };
 
+  const handleReloadAll = () => {
+    removeFromLs('buzzList');
+    removeFromLs('userList');
+    removeFromLs('roomCode');
+    window.location.reload();
+  };
+
   return (
     <div className='host-room-container'>
-      <h1 className='room-name'>Room: {roomCode}</h1>
+      <div>
+        <h1 className='room-name'>Room: {roomCode}</h1>
+        <span className='reload-all' onClick={handleReloadAll}>
+          &#8635;
+        </span>
+      </div>
       <p className='toggle-user-list-btn' onClick={handleToggleUserList}>
         Users ({userListSorted?.length})
       </p>
