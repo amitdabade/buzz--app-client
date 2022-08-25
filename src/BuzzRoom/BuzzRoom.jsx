@@ -58,6 +58,9 @@ const BuzzRoom = (props) => {
     let rank = buzzList?.findIndex(
       (u) => u.userName.toLocaleLowerCase() === userName.toLocaleLowerCase()
     );
+    if (rank === undefined) { 
+      setBuzzRank(0)
+    }
     setBuzzRank(rank + 1);
   };
 
