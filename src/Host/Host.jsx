@@ -104,7 +104,7 @@ const Host = () => {
     <div className='host-room-container'>
       <div>
         <h1 className='room-name'>Room: {roomCode}</h1>
-        <span className='reload-all' onClick={handleReloadAll}>
+        <span className='reload-all' onClick={handleReloadAll} title='Reset buzz room'>
           &#8635;
         </span>
       </div>
@@ -132,7 +132,6 @@ const Host = () => {
             <li className='buzz-list-item' key={user.userName}>
               <span className='buzz-no'>{i + 1}</span>
               <span className='buzz-name'>{user.userName}</span>
-              <span className='buzz-time'>{getBuzzTime(user.time)}</span>
               <span className='buzz-team'>{user.teamName}</span>
             </li>
           ))}
