@@ -82,7 +82,7 @@ const Host = () => {
     if (time === 0) {
       return new Date(t).toLocaleTimeString();
     } else {
-      return '+' + time + ' sec';
+      return '+' + Math.abs(time) + ' sec';
     }
   };
 
