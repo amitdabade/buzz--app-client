@@ -56,8 +56,11 @@
   border: none;
 }
 
+.content-wrapper{
+  margin-bottom: 65px;
+}
+
 .toggle-user-list-btn {
-  margin-top: 0;
   cursor: pointer;
 }
 
@@ -82,6 +85,7 @@
 .buzz-list-item {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .buzz-list-item:nth-child(2n + 1) {
@@ -110,6 +114,7 @@
 .user-name {
   text-transform: uppercase;
   width: 40%;
+  flex: 1;
 }
 
 .buzz-time {
@@ -121,6 +126,12 @@
   float: right;
 }
 
+.reset-button-wrapper{
+  position: fixed;
+  bottom: 15px;
+  width: calc(100% - 30px);
+}
+
 .reset-buzz-button {
   background-color: rgb(165, 51, 51);
   font-size: 22px;
@@ -130,5 +141,6 @@
   border: none;
   cursor: pointer;
   border-radius: 4px;
-  margin-top: 25px;
+  width: 100%;
+  max-width: 400px;
 }
